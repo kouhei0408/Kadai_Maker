@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Schedule</h1>
+    <table>
+        <tr>
+            <th>Date</th>
+            {% for subject in subjects %}
+                <th>{{ subject }}</th>
+            {% endfor %}
+        </tr>
+        {% for date, tasks in schedule %}
+            <tr>
+                <td>{{ date.strftime('%Y-%m-%d') }}</td>
+                {% for subject in subjects %}
+                    <td>{{ tasks[subject] }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
